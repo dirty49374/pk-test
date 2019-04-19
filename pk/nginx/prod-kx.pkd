@@ -11,7 +11,7 @@ metadata:
   labels:
     app: nginx
   annotations:
-    pk.io/images: 'nginx=nginx:0.1.1'
+    pk.io/images: 'nginx=nginx:0.*.*'
 spec:
   selector:
     matchLabels:
@@ -62,7 +62,7 @@ data:
 
     id: ab0b84b2-0cca-437c-a5e8-b51d73d617d8-prod-kx
     name: test-nginx-prod-kx
-    created: '2019-04-19T15:04:31.170Z'
+    created: '2019-04-19T15:07:20.625Z'
     project:
       name: test
       owner: swshin@bluehole.net
@@ -80,5 +80,5 @@ data:
 
   catalog: |-
     Namespace//test-nginx-prod//9db6bfcd
-    Deployment/apps/nginx/test-nginx-prod/3db4d17d
+    Deployment/apps/nginx/test-nginx-prod/8c6934bc
     Service//nginx/test-nginx-prod/7753f13c
