@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-nginx-prod
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: test-nginx-prod
+  labels:
+    app: nginx
+  annotations:
+    pk.io/images: 'nginx=nginx:0.1.1'
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: 'nginx:0.1.1'
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: test-nginx-prod
+  labels:
+    app: nginx
+  annotations: {}
+spec:
+  selector:
+    app: nginx
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-nginx-prod-kx
+  namespace: pk-deployments
+  annotations:
+    pkt.io/type: pk-deployment
+    pkt.io/pk-deployment-id: ab0b84b2-0cca-437c-a5e8-b51d73d617d8-prod-kx
+    pkt.io/pk-deployment-name: test-nginx-prod-kx
+data:
+  header: |+
+
+    #--------------------------------------------------------
+    #  DEPLOYMENT SPEC
+    #--------------------------------------------------------
+
+    id: ab0b84b2-0cca-437c-a5e8-b51d73d617d8-prod-kx
+    name: test-nginx-prod-kx
+    created: '2019-04-19T15:04:31.170Z'
+    project:
+      name: test
+      owner: swshin@bluehole.net
+    cluster: kx
+    namespace: test-nginx-prod
+    git:
+      repo: 'git@github.com:dirty49374/pk-test.git'
+      path: pk/nginx/app.pkt
+    app:
+      name: nginx
+      id: ab0b84b2-0cca-437c-a5e8-b51d73d617d8
+    env: prod
+
+    #--------------------------------------------------------
+
+  catalog: |-
+    Namespace//test-nginx-prod//9db6bfcd
+    Deployment/apps/nginx/test-nginx-prod/3db4d17d
+    Service//nginx/test-nginx-prod/7753f13c
