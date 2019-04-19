@@ -36,7 +36,8 @@ metadata:
   namespace: !js namespace
   labels:
     app: nginx
-  annotations: {}
+  annotations:
+    pk.io/images: nginx=nginx:0.1.1
 spec:
   selector:
     matchLabels:
