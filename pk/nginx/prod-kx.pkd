@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: 'nginx:0.3.9'
+          image: 'nginx:0.3.10'
           ports:
             - containerPort: 80
 ---
