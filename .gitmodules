@@ -1,0 +1,3 @@
+[submodule "pk/pk-modules/home"]
+	path = pk/pk-modules/home
+	url = git@github.com:dirty49374/pk-home.git

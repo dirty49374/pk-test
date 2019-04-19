@@ -1,0 +1,13 @@
+project:
+  name: test
+  owner: swshin@bluehole.net
+values: {}
+apps:
+  - id: ab0b84b2-0cca-437c-a5e8-b51d73d617d8
+    name: nginx
+envs: []
+modules:
+  - name: home
+    repository: 'git@github.com:dirty49374/pk-home.git'
+    branch: master
+deploy: []
