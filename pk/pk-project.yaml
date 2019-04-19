@@ -5,7 +5,9 @@ values: {}
 apps:
   - id: ab0b84b2-0cca-437c-a5e8-b51d73d617d8
     name: nginx
-envs: []
+envs:
+  - name: prod
+    clusters: [ kx ]
 modules:
   - name: home
     repository: 'git@github.com:dirty49374/pk-home.git'
